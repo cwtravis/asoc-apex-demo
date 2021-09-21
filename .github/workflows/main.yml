@@ -16,7 +16,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "scan"
-  scan:
+  Scan:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -38,7 +38,7 @@ jobs:
       # Runs list files in the current working dir
       - name: List Directory
         run: |
-          ls
+          ls -la
         shell: bash
       
       # Runs AppScan Step
@@ -47,7 +47,7 @@ jobs:
           ASOC_KEY: ${{ secrets.ASOC_API_KEY }}
           ASOC_SECRET: ${{ secrets.ASOC_API_SECRET }}
           ASOC_SCAN_NAME: Automated Scan from Github Actions
-          ASOC_APPID: fdd13a3b-146f-48a1-b10c-40a23d0a1fee
+          ASOC_APPID: 4813c695-d1aa-4c70-9455-e2705869e8f6
 
         run: |
           echo "AppScan on Cloud Step Here"
