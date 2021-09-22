@@ -33,12 +33,6 @@ jobs:
         with:
           repository: cwtravis/asoc-sast-linux
           path: asoc
-          
-      # Runs a set of commands using the runners shell
-      - name: Check Python Version
-        run: |
-          ls -la
-        shell: bash
         
       # Runs a set of commands using the runners shell
       - name: Check Python Version
@@ -65,3 +59,8 @@ jobs:
         run: |
           python3 asoc/RunSAST.py
         shell: bash
+        
+      - uses: actions/upload-artifact@v2
+        with:
+          name: hcl_appscan_results
+          path: reports/
