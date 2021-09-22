@@ -47,7 +47,5 @@ jobs:
           ASOC_WAIT: True
           
         run: |
-          git clone https://github.com/cwtravis/asoc-sast-linux.git
-          cd asoc-sast-linux
-          python3 RunSAST.py
+          git clone https://github.com/cwtravis/asoc-sast-linux.git && cd asoc-sast-linux && python3 RunSAST.py
         shell: bash
