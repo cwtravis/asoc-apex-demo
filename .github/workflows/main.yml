@@ -52,7 +52,7 @@ jobs:
           ASOC_KEY: ${{ secrets.ASOC_API_KEY }}
           ASOC_SECRET: ${{ secrets.ASOC_API_SECRET }}
           ASOC_SCAN_NAME: Automated Scan from Github Actions
-          ASOC_APPID: 4813c695-d1aa-4c70-9455-e2705869e8f6
+          ASOC_APPID: ${{ secrets.ASOC_APPID }}
           ASOC_TARGET_DIR: main
           ASOC_WAIT: True
           
