@@ -30,17 +30,20 @@ jobs:
         run: |
           python3 --version
         shell: bash
+        
       # Check working directory
       - name: Show Working Directory
         run: |
           pwd
         shell: bash
-      # Runs list files in the current working dir
-      - name: List Directory
-        run: |
-          ls -la
-        shell: bash
       
+      # Clone the SAST Action Repo
+      - name: Get ASoC SAST Scanning Script
+        run: |
+          git clone https://github.com/cwtravis/asoc-sast-linux.git
+          cd asoc-sast-linux
+        shell: bash
+        
       # Runs AppScan Step
       - name: Perform HCL AppScan Security Analysis
         env:
@@ -48,9 +51,9 @@ jobs:
           ASOC_SECRET: ${{ secrets.ASOC_API_SECRET }}
           ASOC_SCAN_NAME: Automated Scan from Github Actions
           ASOC_APPID: 4813c695-d1aa-4c70-9455-e2705869e8f6
-
+          ASOC_WAIT: True
+          
         run: |
-          echo "AppScan on Cloud Step Here"
-          env
+          python3 RunSAST.py
         shell: bash
           
