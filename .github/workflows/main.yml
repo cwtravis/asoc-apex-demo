@@ -36,13 +36,6 @@ jobs:
         run: |
           pwd
         shell: bash
-      
-      # Clone the SAST Action Repo
-      - name: Get ASoC SAST Scanning Script
-        run: |
-          git clone https://github.com/cwtravis/asoc-sast-linux.git
-          cd asoc-sast-linux
-        shell: bash
         
       # Runs AppScan Step
       - name: Perform HCL AppScan Security Analysis
@@ -54,6 +47,7 @@ jobs:
           ASOC_WAIT: True
           
         run: |
+          git clone https://github.com/cwtravis/asoc-sast-linux.git
+          cd asoc-sast-linux
           python3 RunSAST.py
         shell: bash
-          
