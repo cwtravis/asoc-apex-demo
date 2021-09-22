@@ -25,12 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout Main Repo
         uses: actions/checkout@v2
-      
+        with:
+          path: main
+        
       - name: Checkout ASoC SAST Repo
         uses: actions/checkout@v2
         with:
           repository: cwtravis/asoc-sast-linux
-          path: ../asoc
+          path: asoc
           
       # Runs a set of commands using the runners shell
       - name: Check Python Version
@@ -57,8 +59,9 @@ jobs:
           ASOC_SECRET: ${{ secrets.ASOC_API_SECRET }}
           ASOC_SCAN_NAME: Automated Scan from Github Actions
           ASOC_APPID: 4813c695-d1aa-4c70-9455-e2705869e8f6
+          ASOC_TARGET_DIR: main
           ASOC_WAIT: True
           
         run: |
-          git clone https://github.com/cwtravis/asoc-sast-linux.git && cd asoc-sast-linux && python3 RunSAST.py
+          python3 asoc/RunSAST.py
         shell: bash
