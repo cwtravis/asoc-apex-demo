@@ -51,5 +51,6 @@ jobs:
 
         run: |
           echo "AppScan on Cloud Step Here"
+          env
         shell: bash
           
